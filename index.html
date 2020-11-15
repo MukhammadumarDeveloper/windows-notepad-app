@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Notepad</title>
+</head>
+
+<body>
+    <div class="menu">
+        <nav>
+            <ul>
+                <li><a href="#" class="menu-item">Файл</a>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">Создать</a></li>
+                        <li><a href="#">Новое окно</a></li>
+                        <li><a href="#">Открыть</a></li>
+                        <li><a href="#">Сохранить</a></li>
+                        <li><a href="#">Сохранить как</a></li>
+                        <li><a href="#">Печать</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="menu-item">Правка</a>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">Создать</a></li>
+                        <li><a href="#">Новое окно</a></li>
+                        <li><a href="#">Открыть</a></li>
+                        <li><a href="#">Сохранить</a></li>
+                        <li><a href="#">Сохранить как</a></li>
+                        <li><a href="#">Печать</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="menu-item">Формат</a>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">Создать</a></li>
+                        <li><a href="#">Новое окно</a></li>
+                        <li><a href="#">Открыть</a></li>
+                        <li><a href="#">Сохранить</a></li>
+                        <li><a href="#">Сохранить как</a></li>
+                        <li><a href="#">Печать</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="menu-item">Вид</a>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">Создать</a></li>
+                        <li><a href="#">Новое окно</a></li>
+                        <li><a href="#">Открыть</a></li>
+                        <li><a href="#">Сохранить</a></li>
+                        <li><a href="#">Сохранить как</a></li>
+                        <li><a href="#">Печать</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="menu-item">Справка</a>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">Создать</a></li>
+                        <li><a href="#">Новое окно</a></li>
+                        <li><a href="#">Открыть</a></li>
+                        <li><a href="#">Сохранить</a></li>
+                        <li><a href="#">Сохранить как</a></li>
+                        <li><a href="#">Печать</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="editor">
+        <textarea name="editor-input" id="editor-input"></textarea>
+    </div>
+    <div class="status-bar">
+        <div class="cursor-position">
+            <span class="y-axis">Стр 1</span>,
+            <span class="x-axis">стлб 1</span>
+        </div>
+        <div class="zoom">
+            <span class="zoom-label">100%</span>
+        </div>
+        <div class="charset">
+            <span>UTF-8</span>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

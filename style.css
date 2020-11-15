@@ -1,0 +1,131 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu > nav > ul > li {
+    position: relative;
+    list-style: none;
+}
+
+.menu > nav > ul > li > a {
+    display: inline-block;
+    padding: .4rem .7rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu > nav > ul {
+    display: flex;
+
+}
+
+.menu > nav {
+    border-bottom: 2px solid #f2f2f2;
+}
+
+.editor {
+    height: 100%;
+    width: 100%;
+}
+
+#editor-input {
+    height: 100%;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    resize: none;
+    overflow-y: scroll;
+    padding: .4rem;
+    font-size: 1.2rem;
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    justify-content: flex-end;
+    background: #f0f0f0;
+    border-top: 1px solid #d7d7d7;
+}
+.status-bar > * {
+    border-left: 1px solid #d7d7d7;
+    padding: .7rem;
+    padding-left: 1rem;
+}
+.cursor-position {
+    min-width: 13rem;
+}
+.zoom {
+    min-width: 5rem;
+}
+.charset {
+    min-width: 12rem;
+}
+.status-bar > * > span {
+    font-size: 1.2rem;
+}
+.menu-dropdown {
+    position: absolute;
+    background: #f0f0f0;
+    border: 1px solid #cccccc;
+    width: 200px;
+    display: none;
+}
+.menu-dropdown li {
+    padding: 1px;
+    list-style: none;
+}
+.menu-dropdown li a {
+    line-height: 2.5rem;
+    padding-left: 3rem;
+    display: inline-block;
+    width: 100%;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #000;
+}
+.menu-dropdown li:hover {
+    background: #91c9f7;
+}
+.menu-dropdown li a:hover {
+    background: #91c9f7;
+}
+
+.menu-item:hover {
+    background: #e5f3ff;
+}
+.active-menu-item.menu-item {
+    background: #cce8ff;
+}
+.active-menu-item.menu-item ~ .menu-dropdown {
+    display: block;
+}
+/*
+<div class="status-bar">
+       <div class="cursor-position">
+           <span class="y-axis">Стр 1</span>,
+           <span class="x-axis">стлб 1</span>
+       </div>
+       <div class="zoom">
+           <span class="zoom-label">100%</span>
+       </div>
+       <div class="charset">UTF-8</div>
+   </div>
+*/
