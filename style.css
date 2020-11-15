@@ -81,6 +81,10 @@ body {
 .status-bar > * > span {
     font-size: 1.2rem;
 }
+.file-size, .file-type {
+    min-width: 12rem;
+    text-transform: capitalize;
+}
 .menu-dropdown {
     position: absolute;
     background: #f0f0f0;
