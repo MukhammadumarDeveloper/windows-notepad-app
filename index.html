@@ -20,20 +20,8 @@
                         <li><a href="#">Открыть</a></li>
                         <li><a href="#">Сохранить</a></li>
                         <li><a href="#">Сохранить как...</a></li>
-                        <li><a href="#">Параметры страницы</a></li>
                         <li><a href="#">Печать</a></li>
                         <li><a href="#">Выход</a></li>
-                    </ul>
-                </li>
-                <li><a href="#" class="menu-item">Правка</a>
-                    <ul class="menu-dropdown">
-                        <li><a href="#">Отменить</a></li>
-                        <li><a href="#">Вырезать</a></li>
-                        <li><a href="#">Копировать</a></li>
-                        <li><a href="#">Вставить</a></li>
-                        <li><a href="#">Удалить</a></li>
-                        <li><a href="#">Найти...</a></li>
-                        <li><a href="#">Выделить все</a></li>
                     </ul>
                 </li>
                 <li><a href="#" class="menu-item">Формат</a>
@@ -48,8 +36,8 @@
                 </li>
                 <li><a href="#" class="menu-item">Справка</a>
                     <ul class="menu-dropdown">
-                        <li><a href="#">Посмотреть справку</a></li>
-                        <li><a href="#">О программе</a></li>
+                        <li><a href="https://ru.wikipedia.org/wiki/%D0%91%D0%BB%D0%BE%D0%BA%D0%BD%D0%BE%D1%82_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0)">Посмотреть справку</a></li>
+                        <li><a href="https://www.microsoft.com/en-us/p/windows-notepad/9msmlrh6lzf3">О программе</a></li>
                     </ul>
                 </li>
             </ul>
@@ -58,7 +46,7 @@
     <div class="editor">
         <textarea name="editor-input" id="editor-input"></textarea>
     </div>
-    <div class="status-bar">
+    <div class="status-bar" style="display: flex;">
         <div class="cursor-position">
             <span class="y-axis">Стр 1</span>,
             <span class="x-axis">стлб 1</span>
@@ -73,7 +61,46 @@
             <span>File Type</span>
         </div>
         <div class="charset">
-            <span>Charset</span>
+            <span>UTF-8</span>
+        </div>
+    </div>
+    <div class="window" style="display: none;">
+        <div class="window__title">
+            <h1>Шрифт</h1>
+            <span>+</span>
+        </div>
+        <div class="window__body">
+            <form>
+                <div class="font-settings">
+                    <div class="font-settings__font-family">
+                        <select id="font-family">
+                            <option value="Arial">Arial</option>
+                            <option value="Troman">Times New Roman</option>
+                            <option value="Sansserif">Sans serif</option>
+                        </select>
+                    </div>
+                    <div class="font-settings__font-style">
+                        <select id="font-style">
+                            <option value="Arial">Italic</option>
+                            <option value="Troman">Normal</option>
+                            <option value="Sansserif">Bold</option>
+                        </select>
+                    </div>
+                    <div class="font-settings__font-size">
+                        <input type="number" value="12">
+                    </div>
+                </div>
+                <div class="font-settings__preview">
+                    <fieldset>
+                        <legend>Образец</legend>
+                        <span>AaBbYyZz</span>
+                    </fieldset>
+                </div>
+                <div class="font__controls">
+                    <button class="font-settings__save">OK</button>
+                    <button>Отмена</button>
+                </div>
+            </form>
         </div>
     </div>
     <script src="app.js"></script>
