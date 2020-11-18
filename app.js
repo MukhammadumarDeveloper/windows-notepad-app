@@ -1,18 +1,20 @@
-const windowSettings = {
-    isMousePressed: false,
-
-}
+'use strict';
 const DOMLinks = (function () {
     return {
         editorInput: document.getElementById('editor-input'),
         fileSizeInput: document.querySelector('.file-size').querySelector('span'),
         fileTypeInput: document.querySelector('.file-type').querySelector('span'),
         charsetInput: document.querySelector('.charset').querySelector('span'),
+        fontFamilyInput: document.querySelector('#font-family'),
+        fontSizeInput: document.querySelector('#font-size'),
+        fontStyleInput: document.querySelector('#font-style'),
+        fontPreviewInput: document.querySelector('.font-settings__preview').querySelector('span')
     }
 })();
 
 const editor = (function () {
     let file, contents, fileHandle;
+
 
     async function createFile() {
         DOMLinks.editorInput.value = '';
@@ -27,7 +29,7 @@ const editor = (function () {
                 }
             ]
         }
-        this.fileHandle = await window.showSaveFilePicker(options);
+        fileHandle = await window.showSaveFilePicker(options);
         const writable = await this.fileHandle.createWritable();
         await writable.write(DOMLinks.editorInput.value);
         await writable.close();
@@ -38,13 +40,13 @@ const editor = (function () {
         // Prompt user to select text file and assign file to fileHandle variable
 
         const [data] = await window.showOpenFilePicker();
-        this.fileHandle = data;
+        fileHandle = data;
 
 
 
         // Assign file values to editor's variables
 
-        file = await this.fileHandle.getFile();
+        file = await fileHandle.getFile();
         contents = await file.text();
 
         // Set ready text into textarea
@@ -58,7 +60,6 @@ const editor = (function () {
     }
 
     async function saveFile() {
-        fileHandle = this.fileHandle;
         //        await writable.write(DOMLinks.editorInput.value);
         //        await writable.close();
         //        utilities.closeAllActiveMenus();
@@ -80,8 +81,7 @@ const editor = (function () {
                 }
             ]
         }
-        this.fileHandle = await window.showSaveFilePicker(options);
-        fileHandle = this.fileHandle;
+        fileHandle = await window.showSaveFilePicker(options);
 
         const writable = await fileHandle.createWritable();
         await writable.write(DOMLinks.editorInput.value);
@@ -94,7 +94,7 @@ const editor = (function () {
     }
 
     function exit() {
-
+        self.close();
     }
     function toggleFontSettings() {
         if(document.querySelector('.window').style.display === 'block') {
@@ -112,6 +112,36 @@ const editor = (function () {
             document.querySelector('.status-bar').style.display = 'flex'
         }
     }
+    function saveFontSettings() {
+         //RESET FONT_SETTINGS
+        DOMLinks.editorInput.style.fontStyle = 'normal';
+        DOMLinks.editorInput.style.fontWeight = 'normal';
+        
+        DOMLinks.editorInput.style.fontFamily = DOMLinks.fontFamilyInput.value;
+        DOMLinks.editorInput.style.fontSize = DOMLinks.fontSizeInput.value + 'px';
+        if(DOMLinks.fontStyleInput.value === 'bold') {
+            DOMLinks.editorInput.style.fontStyle = 'normal';
+            DOMLinks.editorInput.style.fontWeight = 'bold';
+        } else {
+            DOMLinks.editorInput.style.fontStyle = DOMLinks.fontStyleInput.value;
+        }
+        
+        toggleFontSettings();
+    }
+    function previewFontSettings() {
+        //RESET FONT_SETTINGS
+        DOMLinks.fontPreviewInput.style.fontStyle = 'normal';
+        DOMLinks.fontPreviewInput.style.fontWeight = 'normal';
+        
+        DOMLinks.fontPreviewInput.style.fontFamily = DOMLinks.fontFamilyInput.value;
+        DOMLinks.fontPreviewInput.style.fontSize = DOMLinks.fontSizeInput.value + 'px';
+        if(DOMLinks.fontStyleInput.value === 'bold') {
+            DOMLinks.fontPreviewInput.style.fontStyle = 'normal';
+            DOMLinks.fontPreviewInput.style.fontWeight = 'bold';
+        } else {
+            DOMLinks.fontPreviewInput.style.fontStyle = DOMLinks.fontStyleInput.value;
+        }
+    }
     return {
         createFile,
         openFile,
@@ -120,6 +150,8 @@ const editor = (function () {
         print,
         toggleStatusBar,
         toggleFontSettings,
+        saveFontSettings,
+        previewFontSettings,
         exit
     }
 })();
@@ -202,10 +234,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-    //other menus
+    //window
 
     dragElement(document.querySelector('.window'));
     document.querySelector('.window__title').querySelector('span').addEventListener('click', editor.toggleFontSettings)
+    document.querySelector('.font-settings__close').addEventListener('click', editor.toggleFontSettings)
+    document.querySelector('.font-settings__save').addEventListener('click', editor.saveFontSettings)
+    
+    // FONT-SETTINGS LIVE PREVIEW BINDINGS
+    DOMLinks.fontFamilyInput.addEventListener('change', editor.previewFontSettings);
+    DOMLinks.fontSizeInput.addEventListener('change', editor.previewFontSettings);
+    DOMLinks.fontStyleInput.addEventListener('change', editor.previewFontSettings);
 
     function dragElement(elmnt) {
         var pos1 = 0,
