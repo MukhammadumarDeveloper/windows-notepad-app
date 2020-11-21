@@ -54,7 +54,7 @@ const editor = (function () {
         DOMLinks.editorInput.value = contents;
         DOMLinks.fileSizeInput.textContent = (file.size / 1024).toFixed(2) + 'KBs';
         DOMLinks.fileTypeInput.textContent = file.type.split('/')[1];
-        document.title = this.fileHandle.name + ' - Notepad';
+        document.title = fileHandle.name + ' - Notepad';
         utilities.closeAllActiveMenus();
 
     }
@@ -97,7 +97,7 @@ const editor = (function () {
         self.close();
     }
     function toggleFontSettings() {
-        if(document.querySelector('.window').style.display === 'block') {
+        if (document.querySelector('.window').style.display === 'block') {
             document.querySelector('.window').style.display = 'none'
         } else {
             document.querySelector('.window').style.display = 'block'
@@ -105,7 +105,7 @@ const editor = (function () {
     }
     function toggleStatusBar() {
         console.log(document.querySelector('.status-bar').style.display)
-        if(document.querySelector('.status-bar').style.display == 'flex') {
+        if (document.querySelector('.status-bar').style.display == 'flex') {
             document.querySelector('.status-bar').style.display = 'none'
             console.log('1121212')
         } else {
@@ -113,29 +113,29 @@ const editor = (function () {
         }
     }
     function saveFontSettings() {
-         //RESET FONT_SETTINGS
+        //RESET FONT_SETTINGS
         DOMLinks.editorInput.style.fontStyle = 'normal';
         DOMLinks.editorInput.style.fontWeight = 'normal';
-        
+
         DOMLinks.editorInput.style.fontFamily = DOMLinks.fontFamilyInput.value;
         DOMLinks.editorInput.style.fontSize = DOMLinks.fontSizeInput.value + 'px';
-        if(DOMLinks.fontStyleInput.value === 'bold') {
+        if (DOMLinks.fontStyleInput.value === 'bold') {
             DOMLinks.editorInput.style.fontStyle = 'normal';
             DOMLinks.editorInput.style.fontWeight = 'bold';
         } else {
             DOMLinks.editorInput.style.fontStyle = DOMLinks.fontStyleInput.value;
         }
-        
+
         toggleFontSettings();
     }
     function previewFontSettings() {
         //RESET FONT_SETTINGS
         DOMLinks.fontPreviewInput.style.fontStyle = 'normal';
         DOMLinks.fontPreviewInput.style.fontWeight = 'normal';
-        
+
         DOMLinks.fontPreviewInput.style.fontFamily = DOMLinks.fontFamilyInput.value;
         DOMLinks.fontPreviewInput.style.fontSize = DOMLinks.fontSizeInput.value + 'px';
-        if(DOMLinks.fontStyleInput.value === 'bold') {
+        if (DOMLinks.fontStyleInput.value === 'bold') {
             DOMLinks.fontPreviewInput.style.fontStyle = 'normal';
             DOMLinks.fontPreviewInput.style.fontWeight = 'bold';
         } else {
@@ -200,37 +200,37 @@ document.addEventListener('DOMContentLoaded', () => {
     //File menu settings
     document.querySelectorAll('.menu-dropdown').forEach(dropDown => {
         dropDown.addEventListener('click', (event) => {
-        let element = event.target;
-        switch (element.textContent) {
-            case 'Создать':
-                editor.createFile();
-                break;
-            case 'Открыть':
-                editor.openFile();
-                break;
-            case 'Сохранить':
-                editor.saveFile();
-                break;
-            case 'Сохранить как...':
-                editor.saveFileAs();
-                break;
-            case 'Параметры страницы':
-                editor.pageSettings();
-                break;
-            case 'Печать':
-                editor.print();
-                break;
-            case 'Выход':
-                editor.exit();
-                break;
-            case 'Шрифт':
-                editor.toggleFontSettings();
-                break;
-            case 'Строка состояния':
-                editor.toggleStatusBar();
-                break;
-        }
-    })
+            let element = event.target;
+            switch (element.textContent) {
+                case 'Создать':
+                    editor.createFile();
+                    break;
+                case 'Открыть':
+                    editor.openFile();
+                    break;
+                case 'Сохранить':
+                    editor.saveFile();
+                    break;
+                case 'Сохранить как...':
+                    editor.saveFileAs();
+                    break;
+                case 'Параметры страницы':
+                    editor.pageSettings();
+                    break;
+                case 'Печать':
+                    editor.print();
+                    break;
+                case 'Выход':
+                    editor.exit();
+                    break;
+                case 'Шрифт':
+                    editor.toggleFontSettings();
+                    break;
+                case 'Строка состояния':
+                    editor.toggleStatusBar();
+                    break;
+            }
+        })
     })
 
 
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.window__title').querySelector('span').addEventListener('click', editor.toggleFontSettings)
     document.querySelector('.font-settings__close').addEventListener('click', editor.toggleFontSettings)
     document.querySelector('.font-settings__save').addEventListener('click', editor.saveFontSettings)
-    
+
     // FONT-SETTINGS LIVE PREVIEW BINDINGS
     DOMLinks.fontFamilyInput.addEventListener('change', editor.previewFontSettings);
     DOMLinks.fontSizeInput.addEventListener('change', editor.previewFontSettings);
